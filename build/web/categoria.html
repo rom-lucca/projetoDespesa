@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit this template
+-->
+<html>
+    <head>
+        <title>Cadastrar Categoria</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            flex-direction: column;
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        label, input {
+            margin: 10px 0;
+            font-size: 16px;
+        }
+
+        input[type="text"] {
+            padding: 10px;
+            width: 300px;
+        }
+
+        input[type="submit"], a {
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            text-align: center;
+        }
+
+        a {
+            color: #000;
+            text-decoration: none;
+            background-color: #f0f0f0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 10px 20px;
+            display: inline-block;
+            margin-top: 10px;
+        }
+
+        a:hover {
+            background-color: #e0e0e0;
+        }
+    </style> 
+    </head>
+    <body>
+        <h1>Nova Categoria</h1>
+        <form action="./REGISTRO/categoria.jsp" method="post">
+            <label for="categoriaNome">Nome da Categoria:</label>
+            <input type="text" id="categoriaNome" name="categoriaNome">
+            <input type="submit" value="Criar Categoria">
+            <a href="./REGISTRO/home.jsp">Voltar para o menu principal</a>
+        </form>
+    </body>
+</html>
