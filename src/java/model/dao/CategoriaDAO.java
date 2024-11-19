@@ -10,6 +10,12 @@ import java.util.ArrayList;
 
 public class CategoriaDAO {
 
+    private UserDAO userDAO;
+
+    public CategoriaDAO(UserDAO userDao) {
+        this.userDAO = userDao;
+    }
+
     public boolean criarCategoria(Categoria categoria, HttpSession session) throws SQLException {
         String INSERT_CATEGORIA_SQL = "INSERT INTO categoria (categoria, id_user) VALUES (?, ?)";
 
@@ -49,7 +55,23 @@ public boolean usuarioTemCategorias(int userId) throws SQLException {
 
     return false;  // Retorna false se não encontrar nenhuma categoria
     }
-    
+
+    public boolean existeCategoria(int idCategoria) throws SQLException {
+        String EXISTE = "SELECT 1 FROM categoria WHERE id = ?";
+
+        try (Connection connection = Conecta.conecta();
+             PreparedStatement preparedStatement = connection.prepareStatement(EXISTE)) {
+
+            preparedStatement.setInt(1, idCategoria);
+            try (ResultSet rs = preparedStatement.executeQuery()) {
+                return rs.next();
+            }
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+
     public List<Categoria> obterCategoriasPorUsuario(int userId) throws SQLException {
     String SELECT_CATEGORIA_SQL = "SELECT id, categoria FROM categoria WHERE id_user = ?";
     List<Categoria> categorias = new ArrayList<>();

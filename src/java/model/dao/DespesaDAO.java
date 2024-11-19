@@ -13,7 +13,13 @@ import java.sql.ResultSet;
 
 public class DespesaDAO {
 
-    public boolean criarDespesa(Despesa despesa, HttpSession session) throws SQLException {
+    private CategoriaDAO categoriaDAO;
+
+    public DespesaDAO(CategoriaDAO categoriaDAO) {
+        this.categoriaDAO = categoriaDAO;
+    }
+
+    public boolean criarDespesa(Despesa despesa, HttpSession session) throws SQLException, Exception {
         String INSERT_DESPESA_SQL = "INSERT INTO despesa (nome, datad, descricao, valor, id_categoria, id_user) VALUES (?, CURRENT_DATE, ?, ?, ?, ?)";
 
         int userId = (int) session.getAttribute("userId");
@@ -24,6 +30,9 @@ public class DespesaDAO {
             preparedStatement.setString(1, despesa.getNome());
             preparedStatement.setString(2, despesa.getDescricao());
             preparedStatement.setDouble(3, despesa.getValor());
+            if (!categoriaDAO.existeCategoria(despesa.getId_categoria())) {
+                throw new Exception("Categoria Inexistente!");
+            }
             preparedStatement.setInt(4, despesa.getId_categoria());
             preparedStatement.setInt(5, userId);
 
@@ -85,7 +94,7 @@ public class DespesaDAO {
         return somaPorCategoria;
     }
 
-public boolean atualizarDespesa(int idDespesa, String nome, int idCategoria, String descricao, double valor) throws SQLException {
+public boolean atualizarDespesa(int idDespesa, String nome, int idCategoria, String descricao, double valor) throws SQLException, Exception {
     String UPDATE_DESPESA_SQL = "UPDATE despesa SET nome = ?, descricao = ?, valor = ?, id_categoria = ? WHERE id = ?";
 
     try (Connection connection = Conecta.conecta();
@@ -94,7 +103,13 @@ public boolean atualizarDespesa(int idDespesa, String nome, int idCategoria, Str
         preparedStatement.setString(1, nome);
         preparedStatement.setString(2, descricao);
         preparedStatement.setDouble(3, valor);
+        if (!categoriaDAO.existeCategoria(idCategoria)) {
+            throw new Exception("Categoria Inexistente!");
+        }
         preparedStatement.setInt(4, idCategoria);
+        if (!existeDespesa(idDespesa)) {
+            throw new Exception("Despesa Inexistente!");
+        }
         preparedStatement.setInt(5, idDespesa);
 
         int rowsAffected = preparedStatement.executeUpdate();
@@ -121,5 +136,23 @@ public boolean atualizarDespesa(int idDespesa, String nome, int idCategoria, Str
         } catch (SQLException e) {
             throw new RuntimeException("Erro ao excluir despesa", e);
         }
+    }
+
+    public boolean existeDespesa(int id_despesa) throws Exception, SQLException {
+        String EXISTE = "SELECT 1 FROM despesa WHERE id = ?";
+        boolean existe = false;
+        try (Connection connection = Conecta.conecta();
+             PreparedStatement preparedStatement = connection.prepareStatement(EXISTE)) {
+
+            preparedStatement.setInt(1, id_despesa);
+            ResultSet rs = preparedStatement.executeQuery();
+            existe = rs.next();
+            if (!existe) {
+                throw new Exception("Despesa não existe!");
+            }
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+        return existe;
     }
 }
