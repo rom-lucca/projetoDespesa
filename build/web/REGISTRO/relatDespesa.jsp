@@ -54,9 +54,13 @@
     <%
         // Obter a sessão do usuário
         HttpSession sessao = request.getSession(false);
+        // Se a sessão estiver ativa
         if (sessao != null) {
+            //Puxa o userId da sessao
             Integer userId = (Integer) sessao.getAttribute("userId");
+            // Se tiver userId
             if (userId != null) {
+            // Instancia de objetos
                 DespesaDAO despesaDAO = new DespesaDAO();
                 CategoriaDAO categoriaDAO = new CategoriaDAO();
     %>

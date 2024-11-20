@@ -2,6 +2,7 @@
 <%@ page import="model.dao.DespesaDAO" %>
 <%@ page import="java.sql.SQLException" %>
 <%
+    // Deleta o registro pelo ID
     int despesaId = Integer.parseInt(request.getParameter("despesaId"));
 
     DespesaDAO despesaDAO = new DespesaDAO();

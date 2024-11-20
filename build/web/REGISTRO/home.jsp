@@ -51,8 +51,6 @@
 <body>
     <h1>Bem-vindo!</h1>
 
-    <a href="../categoria.html"><button>Cadastrar Categoria</button></a>
-
     <%
         // Obter a sessão do usuário
         HttpSession sessao = request.getSession(false);
@@ -80,8 +78,9 @@
                     out.println("<p>Você precisa criar pelo menos uma categoria para cadastrar uma despesa.</p>");
                 }
                 
-                            // Botão para visualizar despesas
+                            // Botão para visualizar, editar e excluir despesas
     %>
+                    <a href="../categ.jsp"><button>Cadastrar Categoria</button></a>
                     <a href="./relatDespesa.jsp"><button>Visualizar Despesas</button></a>
                     <a href="./edit.jsp"><button>Editar Despesas</button></a>
                     <a href="./excluir.jsp"><button>Excluir Despesas</button></a>

@@ -1,7 +1,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@page import="modelo.User"%>
 <%@page import="model.dao.UserDAO"%>
-<%@page import="javax.servlet.http.HttpSession"%> <!-- Importar a classe HttpSession -->
+<%@page import="javax.servlet.http.HttpSession"%>
 <!DOCTYPE html>
 <html>
     <head>

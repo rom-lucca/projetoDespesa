@@ -9,14 +9,15 @@ import java.util.ArrayList;
 
 
 public class CategoriaDAO {
-
+    
+    //Metódo para criar categorias de despesas
     public boolean criarCategoria(Categoria categoria, HttpSession session) throws SQLException {
-        String INSERT_CATEGORIA_SQL = "INSERT INTO categoria (categoria, id_user) VALUES (?, ?)";
+        String sql = "INSERT INTO categoria (categoria, id_user) VALUES (?, ?)";
 
         int userId = (int) session.getAttribute("userId");
 
         try (Connection connection = Conecta.conecta();
-             PreparedStatement preparedStatement = connection.prepareStatement(INSERT_CATEGORIA_SQL)) {
+             PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
 
             preparedStatement.setString(1, categoria.getCategoria());
             preparedStatement.setInt(2, userId);
@@ -29,33 +30,35 @@ public class CategoriaDAO {
             throw new RuntimeException("Erro ao inserir categoria", e);
         }
     }
-    
-public boolean usuarioTemCategorias(int userId) throws SQLException {
-    String SQL_COUNT_CATEGORIAS = "SELECT COUNT(*) FROM categoria WHERE id_user = ?";
 
-    try (Connection connection = Conecta.conecta();
-         PreparedStatement preparedStatement = connection.prepareStatement(SQL_COUNT_CATEGORIAS)) {
+    //Metódo para conferir se o usuario tem categorias criadas
+    public boolean usuarioTemCategorias(int userId) throws SQLException {
+        String sql = "SELECT COUNT(*) FROM categoria WHERE id_user = ?";
 
-        preparedStatement.setInt(1, userId);
+        try (Connection connection = Conecta.conecta();
+            PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
 
-        try (ResultSet resultSet = preparedStatement.executeQuery()) {
-            if (resultSet.next()) {
-                return resultSet.getInt(1) > 0;
+            preparedStatement.setInt(1, userId);
+
+            try (ResultSet resultSet = preparedStatement.executeQuery()) {
+                if (resultSet.next()) {
+                    return resultSet.getInt(1) > 0;
+                }
             }
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException("Erro ao carregar o driver do banco de dados", e);
         }
-    } catch (ClassNotFoundException e) {
-        throw new RuntimeException("Erro ao carregar o driver do banco de dados", e);
-    }
 
     return false;  // Retorna false se não encontrar nenhuma categoria
     }
     
+    //Metódo para pegar uma lista de categorias pelo usuário
     public List<Categoria> obterCategoriasPorUsuario(int userId) throws SQLException {
-    String SELECT_CATEGORIA_SQL = "SELECT id, categoria FROM categoria WHERE id_user = ?";
+    String sql = "SELECT id, categoria FROM categoria WHERE id_user = ?";
     List<Categoria> categorias = new ArrayList<>();
 
     try (Connection connection = Conecta.conecta();
-         PreparedStatement preparedStatement = connection.prepareStatement(SELECT_CATEGORIA_SQL)) {
+         PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
 
         preparedStatement.setInt(1, userId);
         ResultSet rs = preparedStatement.executeQuery();

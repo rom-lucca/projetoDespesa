@@ -5,6 +5,7 @@
 <%@ page import="java.sql.SQLException"%>
 
 <%
+    // Confere se a sessão do cliente está ativa
     HttpSession sessao = request.getSession();
     int userId = (int) sessao.getAttribute("userId");
 

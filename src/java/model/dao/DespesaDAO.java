@@ -12,14 +12,14 @@ import javax.servlet.http.HttpSession;
 import java.sql.ResultSet;
 
 public class DespesaDAO {
-
+    //Método para criar despesa
     public boolean criarDespesa(Despesa despesa, HttpSession session) throws SQLException {
-        String INSERT_DESPESA_SQL = "INSERT INTO despesa (nome, datad, descricao, valor, id_categoria, id_user) VALUES (?, CURRENT_DATE, ?, ?, ?, ?)";
+        String sql = "INSERT INTO despesa (nome, datad, descricao, valor, id_categoria, id_user) VALUES (?, CURRENT_DATE, ?, ?, ?, ?)";
 
         int userId = (int) session.getAttribute("userId");
 
         try (Connection connection = Conecta.conecta();
-             PreparedStatement preparedStatement = connection.prepareStatement(INSERT_DESPESA_SQL)) {
+             PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
 
             preparedStatement.setString(1, despesa.getNome());
             preparedStatement.setString(2, despesa.getDescricao());
@@ -35,7 +35,32 @@ public class DespesaDAO {
             throw new RuntimeException("Erro ao inserir despesa", e);
         }
     }
-
+    
+    //Método para pegar uma despesa pelo seu ID
+    public Despesa getDespesa(int despesaId) throws SQLException{
+       String sql = "SELECT * FROM despesa WHERE id=?";
+       Despesa despesa = null;
+       try (Connection connection = Conecta.conecta();
+             PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
+              preparedStatement.setInt(1, despesaId);
+              try (ResultSet rs = preparedStatement.executeQuery()) {
+                while (rs.next()) {
+                    despesa = new Despesa();
+                    despesa.setId(rs.getInt("id"));
+                    despesa.setNome(rs.getString("nome"));
+                    despesa.setDescricao(rs.getString("descricao"));
+                    despesa.setValor(rs.getDouble("valor"));
+                    despesa.setData(rs.getDate("datad"));
+                    despesa.setId_categoria(rs.getInt("id_categoria"));
+                }
+            }
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException("Erro ao carregar o driver do banco de dados", e);
+        }
+        return despesa;
+    }
+    
+    // Lista que contém todas as despesas mensais do user
     public List<Despesa> obterDespesasMes(int userId) throws SQLException {
         String SELECT_DESPESAS_MES_SQL = "SELECT id, nome, descricao, valor, datad, id_categoria FROM despesa WHERE id_user = ? AND MONTH(datad) = MONTH(CURRENT_DATE) AND YEAR(datad) = YEAR(CURRENT_DATE)";
         List<Despesa> despesas = new ArrayList<>();
@@ -61,7 +86,8 @@ public class DespesaDAO {
         }
         return despesas;
     }
-
+    
+    // Lista que contém soma de valores para cada categoria
     public List<Object[]> obterSomaPorCategoria(int userId) throws SQLException {
         String SOMA_POR_CATEGORIA_SQL = "SELECT categoria.id as id, categoria.categoria AS categoria, SUM(despesa.valor) AS total FROM despesa JOIN categoria ON despesa.id_categoria = categoria.id WHERE despesa.id_user = ? AND MONTH(despesa.datad) = MONTH(CURRENT_DATE) AND YEAR(despesa.datad) = YEAR(CURRENT_DATE) GROUP BY categoria.categoria";
         List<Object[]> somaPorCategoria = new ArrayList<>();
@@ -85,7 +111,8 @@ public class DespesaDAO {
         return somaPorCategoria;
     }
 
-public boolean atualizarDespesa(int idDespesa, String nome, int idCategoria, String descricao, double valor) throws SQLException {
+    // Boolean que faz o update e retorna true ou false para o resultado
+    public boolean atualizarDespesa(int idDespesa, String nome, int idCategoria, String descricao, double valor) throws SQLException {
     String UPDATE_DESPESA_SQL = "UPDATE despesa SET nome = ?, descricao = ?, valor = ?, id_categoria = ? WHERE id = ?";
 
     try (Connection connection = Conecta.conecta();

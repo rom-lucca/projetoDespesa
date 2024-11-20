@@ -1,8 +1,3 @@
-<%-- 
-    Document   : categoria
-    Created on : 7 de out. de 2024, 20:56:16
-    Author     : alunocmc
---%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@page import="model.dao.CategoriaDAO"%>
@@ -50,7 +45,7 @@
     <body>
         <h1>Categoria criada com sucesso</h1>
         <%
-        // Supondo que a categoria seja obtida do formulário de criação de categoria
+        // Instancia de objeto
         Categoria categoria = new Categoria();
         categoria.setCategoria(request.getParameter("categoriaNome")); // Pega o nome da categoria do formulário
 

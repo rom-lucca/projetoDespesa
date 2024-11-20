@@ -89,6 +89,7 @@
         <label for="id_categoria">Categoria:</label>
         <select id="id_categoria" name="id_categoria" required>
             <%
+                //dropdown com todas as categorias
                 for (Categoria categoria : categorias) {
                     out.println("<option value=\"" + categoria.getId() + "\">" + categoria.getCategoria() + "</option>");
                 }
