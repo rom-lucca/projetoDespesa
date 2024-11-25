@@ -30,7 +30,7 @@
                                 <% } %>
                             </select>
                             <br><br>
-                            <button type="submit">Alterar</button>
+                            <button type="submit">Exlcuir</button>
                         </form>
     <%
                     } else {
