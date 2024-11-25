@@ -15,8 +15,6 @@
 
 ### BackEnd e Frameworks
 > <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg" width="5%"/>  
-> <img src="![image](https://github.com/user-attachments/assets/e3a0d6cf-ae90-48fe-897a-bfcc99c3e154)
-" width="5%"/>  
 > <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" width="5%"/> 
 
 ---
