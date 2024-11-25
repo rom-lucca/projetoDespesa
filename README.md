@@ -1,60 +1,83 @@
-> ##Projeto Despesa</h1>
-    <p>Este projeto é um sistema de controle de despesas desenvolvido em <strong>Java</strong> com integração ao banco de dados <strong>MySQL</strong>. O sistema permite que os usuários gerenciem suas despesas de forma eficiente, com funcionalidades que incluem autenticação de usuários, cadastro e visualização de despesas.</p>
+## Olá, este é o **Projeto Despesa**!
 
-    <h2>🛠️ Tecnologias Utilizadas</h2>
-    <ul>
-        <li><strong>Java</strong>: Backend do sistema.</li>
-        <li><strong>MySQL</strong>: Banco de dados para armazenar informações de usuários e despesas.</li>
-        <li><strong>JDBC</strong>: Para conexão e manipulação do banco de dados.</li>
-        <li><strong>JSP</strong>: Para desenvolvimento da interface web.</li>
-        <li><strong>HTML/CSS</strong>: Para estilização básica do frontend.</li>
-    </ul>
+📊 Sistema para gerenciamento de despesas desenvolvido em **Java** e integrado ao banco de dados **MySQL**. <br>  
+🌐 Tecnologias usadas: Java, JSP, JDBC, MySQL, Apache Tomcat.  
 
-    <h2>📋 Funcionalidades</h2>
-    <ul>
-        <li><strong>Autenticação de Usuários</strong>: Login e validação com CPF e senha.</li>
-        <li><strong>Cadastro de Despesas</strong>: Inserção de novos registros de despesas vinculados a um usuário.</li>
-        <li><strong>Listagem de Despesas</strong>: Exibição das despesas cadastradas por usuário.</li>
-        <li><strong>Validação de Sessão</strong>: Utilização de <code>HttpSession</code> para identificar e manter o usuário logado.</li>
-    </ul>
+---
 
-    <h2>🚀 Como Executar o Projeto</h2>
-    <h3>Pré-requisitos</h3>
-    <p>Certifique-se de ter instalado:</p>
-    <ul>
-        <li><a href="https://www.oracle.com/java/technologies/javase-jdk11-downloads.html" target="_blank">Java JDK</a> (versão 11 ou superior).</li>
-        <li><a href="https://dev.mysql.com/downloads/mysql/" target="_blank">MySQL</a> (configurado e rodando).</li>
-        <li>IDE Java (como <a href="https://www.jetbrains.com/idea/" target="_blank">IntelliJ IDEA</a> ou <a href="https://www.eclipse.org/downloads/" target="_blank">Eclipse</a>).</li>
-        <li>Servidor Web (como <a href="https://tomcat.apache.org/" target="_blank">Apache Tomcat</a>).</li>
-    </ul>
+## 💻 Tecnologias Utilizadas
+<div style="display: inline-block"><br>
 
-    <h3>Passos</h3>
-    <ol>
-        <li><strong>Clone o Repositório</strong>
-            <pre><code>git clone https://github.com/rom-lucca/projetoDespesa.git</code></pre>
-            Navegue até o diretório do projeto:
-            <pre><code>cd projetoDespesa</code></pre>
-        </li>
-        <li><strong>Configure o Banco de Dados</strong>
-            <p>Importe o script SQL localizado em <code>src/main/resources/database.sql</code> para criar as tabelas no banco de dados. Configure as credenciais de conexão no arquivo <code>DatabaseConnection.java</code>.</p>
-        </li>
-        <li><strong>Compile e Execute o Projeto</strong>
-            <p>Importe o projeto para sua IDE. Configure o Apache Tomcat como servidor de aplicação. Compile e execute o projeto.</p>
-        </li>
-        <li><strong>Acesse o Sistema</strong>
-            <p>Abra o navegador e acesse:</p>
-            <pre><code>http://localhost:8080/projetoDespesa</code></pre>
-        </li>
-    </ol>
+### FrontEnd e FrameWorks  
+![HTML5](https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg)  
+![CSS3](https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg)  
+![Apache Tomcat](https://cdn.jsdelivr.net/gh/devicons/devicon/icons/apache/apache-original-wordmark.svg)
 
-    <h2>🗂 Estrutura do Projeto</h2>
-    <ul>
-        <li><code>src/</code>: Código-fonte do projeto.
-            <ul>
-                <li><code>dao/</code>: Classes de acesso ao banco de dados (ex.: <code>DespesaDAO</code>).</li>
-                <li><code>model/</code>: Classes de modelo (ex.: <code>Despesa</code> e <code>Usuario</code>).</li>
-                <li><code>controller/</code>: Lógica para gerenciar requisições do usuário.</li>
-            </ul>
-        </li>
-        <li><code>web/</code>: Páginas JSP e recursos estáticos (HTML/CSS).</li>
-    </ul>
+### BackEnd e Frameworks
+![Java](https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg)  
+![JSP](https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg)  
+![MySQL](https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg)  
+
+---
+
+## 📋 Funcionalidades
+
+- **Autenticação de Usuários**: Login e validação com CPF e senha.
+- **Cadastro de Despesas**: Inserção de novos registros de despesas vinculados a um usuário.
+- **Listagem de Despesas**: Exibição das despesas cadastradas por usuário.
+- **Validação de Sessão**: Utilização de `HttpSession` para identificar e manter o usuário logado.
+
+---
+
+## 🚀 Como Executar o Projeto
+
+### Pré-requisitos
+
+Certifique-se de ter instalado:
+
+- [Java JDK](https://www.oracle.com/java/technologies/javase-jdk11-downloads.html) (versão 11 ou superior).
+- [MySQL](https://dev.mysql.com/downloads/mysql/) (configurado e rodando).
+- IDE Java (como [IntelliJ IDEA](https://www.jetbrains.com/idea/) ou [Eclipse](https://www.eclipse.org/downloads/)).
+- Servidor Web (como [Apache Tomcat](https://tomcat.apache.org/)).
+
+### Passos
+
+1. **Clone o Repositório**
+    ```bash
+    git clone https://github.com/rom-lucca/projetoDespesa.git
+    ```
+    Navegue até o diretório do projeto:
+    ```bash
+    cd projetoDespesa
+    ```
+
+2. **Configure o Banco de Dados**
+    - Importe o script SQL localizado em `src/main/resources/database.sql` para criar as tabelas no banco de dados.
+    - Configure as credenciais de conexão no arquivo `DatabaseConnection.java`.
+
+3. **Compile e Execute o Projeto**
+    - Importe o projeto para sua IDE.
+    - Configure o Apache Tomcat como servidor de aplicação.
+    - Compile e execute o projeto.
+
+4. **Acesse o Sistema**
+    Abra o navegador e acesse:
+    ```
+    http://localhost:8080/projetoDespesa
+    ```
+
+---
+
+## 🗂 Estrutura do Projeto
+
+- `src/`: Código-fonte do projeto.
+  - `dao/`: Classes de acesso ao banco de dados (ex.: `DespesaDAO`).
+  - `model/`: Classes de modelo (ex.: `Despesa` e `Usuario`).
+  - `controller/`: Lógica para gerenciar requisições do usuário.
+- `web/`: Páginas JSP e recursos estáticos (HTML/CSS).
+
+---
+
+## 📄 Licença
+
+Este projeto é licenciado sob os termos da [MIT License](LICENSE).
