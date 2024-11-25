@@ -19,58 +19,77 @@
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cadastrar Despesa</title>
     <style>
-        body {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-direction: column;
-            height: 100vh;
+        * {
             margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
             font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            padding: 2rem;
+            text-align: center;
         }
 
         h1 {
-            text-align: center;
+            color: #34495e;
+            margin-bottom: 1.5rem;
         }
 
         form {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 2rem;
+            width: 100%;
+            max-width: 400px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
 
-        label, input, select {
-            margin: 10px 0;
-            font-size: 16px;
-        }
-        
-        textarea{
-            padding: 10px;
-            height: 80px;
-            width: 300px;   
-        }
-        
-        select{
-            width:320px;
-        }
-        
-        input[type="text"], input[type="number"]{
-            padding: 10px;
-            width: 300px;
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+            color: #555;
         }
 
-        button {
-            margin-top: 20px;
-            padding: 10px 20px;
-            font-size: 16px;
+        input, select, textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 1rem;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 1rem;
+        }
+
+        input[type="submit"] {
+            background-color: #27ae60;
+            color: #fff;
+            border: none;
             cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #219150;
+        }
+
+        textarea {
+            resize: none;
         }
 
         p {
-            text-align: center;
             color: red;
+            margin-top: 1rem;
         }
     </style>
 </head>
@@ -78,23 +97,23 @@
     <h1>Cadastrar Despesa</h1>
     <form action="cadastrarDespesa.jsp" method="post">
         <label for="nome">Nome da Despesa:</label>
-        <input type="text" id="nome" name="nome" required><br>
+        <input type="text" id="nome" name="nome" placeholder="Ex.: Conta de luz" required>
 
         <label for="descricao">Descrição:</label>
-        <textarea id="descricao" name="descricao" required></textarea><br>
+        <textarea id="descricao" name="descricao" placeholder="Ex.: Despesa mensal de eletricidade" required></textarea>
 
         <label for="valor">Valor:</label>
-        <input type="number" id="valor" name="valor" step="0.01" required><br>
+        <input type="number" id="valor" name="valor" step="0.01" placeholder="Ex.: 150.00" required>
 
         <label for="id_categoria">Categoria:</label>
         <select id="id_categoria" name="id_categoria" required>
             <%
-                //dropdown com todas as categorias
+                // Preencher o dropdown com as categorias do usuário
                 for (Categoria categoria : categorias) {
                     out.println("<option value=\"" + categoria.getId() + "\">" + categoria.getCategoria() + "</option>");
                 }
             %>
-        </select><br>
+        </select>
 
         <input type="submit" value="Cadastrar Despesa">
     </form>

@@ -1,24 +1,121 @@
 <!DOCTYPE html>
-<!--
-Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
-Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit this template
--->
-<html>
-    <head>
-        <title>Login</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    </head>
-    <body>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .container {
+            background-color: #fff;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 400px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        h1 {
+            font-size: 1.8rem;
+            color: #27ae60;
+            margin-bottom: 1.5rem;
+            width: 100%;
+            text-align: center;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            width: 100%;
+        }
+
+        label {
+            font-size: 0.9rem;
+            color: #555;
+        }
+
+        input[type="text"],
+        input[type="password"] {
+            padding: 0.8rem;
+            font-size: 1rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            background-color: #f9f9f9;
+            outline: none;
+            transition: border-color 0.3s;
+            width: 100%;
+        }
+
+        input[type="text"]:focus,
+        input[type="password"]:focus {
+            border-color: #27ae60;
+        }
+
+        input[type="submit"] {
+            padding: 0.8rem;
+            font-size: 1rem;
+            color: #fff;
+            background-color: #27ae60;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            width: 100%;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #219150;
+        }
+
+        .extra-text {
+            font-size: 0.9rem;
+            color: #555;
+            margin-top: 1rem;
+            text-align: center;
+        }
+
+        a {
+            font-size: 0.9rem;
+            color: #27ae60;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        a:hover {
+            color: #219150;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
         <h1>Login</h1>
         <form name="frmReg" method="post" action="./REGISTRO/login.jsp">
-            CPF: <input type="text" name="cpf"> <p>
-            Senha: <input type="password" name="senha"> <p>
+            <label for="cpf">CPF:</label>
+            <input type="text" id="cpf" name="cpf" placeholder="Digite seu CPF">
+            <label for="senha">Senha:</label>
+            <input type="password" id="senha" name="senha" placeholder="Digite sua senha">
             <input type="submit" value="Entrar">
-            <br>
-            Ainda não criou sua conta?
-            <br>
-            <a href="index.html">Ir para cadastro</a>
         </form>
-    </body>
+        <p class="extra-text">Ainda não criou sua conta? <a href="index.html">Ir para cadastro</a></p>
+    </div>
+</body>
 </html>

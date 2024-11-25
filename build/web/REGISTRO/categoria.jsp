@@ -1,64 +1,81 @@
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@page import="model.dao.CategoriaDAO"%>
 <%@page import="modelo.Categoria"%>
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
-        <style>
-        body {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-direction: column;
-            height: 100vh;
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Categoria Criada</title>
+    <style>
+        * {
             margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
             font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            text-align: center;
+            padding: 2rem;
         }
 
         h1 {
-            text-align: center;
+            color: #27ae60;
+            margin-bottom: 1rem;
         }
 
-        p, a {
-            font-size: 18px;
-            margin: 10px 0;
-            text-align: center;
+        p {
+            font-size: 1rem;
+            color: #555;
+            margin-bottom: 1.5rem;
         }
 
         a {
-            color: #000;
             text-decoration: none;
-            padding: 10px 20px;
-            background-color: #f0f0f0;
-            border: 1px solid #ccc;
-            border-radius: 5px;
+            color: #fff;
+            background-color: #27ae60;
+            padding: 0.8rem 1.5rem;
+            border-radius: 4px;
+            font-size: 1rem;
+            transition: background-color 0.3s;
         }
 
         a:hover {
-            background-color: #e0e0e0;
+            background-color: #219150;
         }
     </style>
-    </head>
-    <body>
-        <h1>Categoria criada com sucesso</h1>
-        <%
-        // Instancia de objeto
+</head>
+<body>
+    <%
+        // Instancia o objeto Categoria e pega o nome da categoria do formulário
         Categoria categoria = new Categoria();
-        categoria.setCategoria(request.getParameter("categoriaNome")); // Pega o nome da categoria do formulário
+        categoria.setCategoria(request.getParameter("categoriaNome"));
 
+        // Instancia o DAO e tenta criar a categoria
         CategoriaDAO categoriaDAO = new CategoriaDAO();
         boolean sucesso = categoriaDAO.criarCategoria(categoria, request.getSession());
 
         if (sucesso) {
-            out.println("Categoria " + request.getParameter("categoriaNome")+ " foi criada com sucesso!");
-            out.println("<a href='home.jsp'>Voltar ao menu</a>");
+    %>
+        <h1>Categoria criada com sucesso!</h1>
+        <p>A categoria <strong><%= request.getParameter("categoriaNome") %></strong> foi adicionada ao sistema.</p>
+        <a href="home.jsp">Voltar ao Menu Principal</a>
+    <%
         } else {
-            out.println("Erro ao criar categoria.");
+    %>
+        <h1>Erro ao criar categoria</h1>
+        <p>Ocorreu um problema ao tentar criar a categoria. Por favor, tente novamente.</p>
+        <a href="home.jsp">Voltar ao Menu Principal</a>
+    <%
         }
-
-        %>
-    </body>
+    %>
+</body>
 </html>

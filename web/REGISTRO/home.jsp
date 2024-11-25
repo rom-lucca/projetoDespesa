@@ -10,39 +10,66 @@
 <html lang="pt-BR">
 <head>
     <style>
-        body {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-direction: column;
-            height: 100vh;
+        * {
             margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
             font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            padding: 2rem;
         }
 
-        h1, h2 {
+        h1 {
+            font-size: 2rem;
+            color: #27ae60;
+            margin-bottom: 1rem;
             text-align: center;
         }
 
-        table {
-            width: 80%;
-            border-collapse: collapse;
-            margin: 20px 0;
+        p {
+            font-size: 1rem;
+            color: #555;
+            margin-bottom: 1.5rem;
         }
 
-        table, th, td {
-            border: 1px solid black;
+        .button-group {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            width: 100%;
+            max-width: 300px;
         }
 
-        th, td {
-            padding: 10px;
-            text-align: center;
+        a {
+            text-decoration: none;
+            display: flex;
         }
 
         button {
+            padding: 0.8rem;
             margin: 10px;
-            padding: 10px 20px;
-            font-size: 16px;
+            font-size: 1rem;
+            color: #fff;
+            background-color: #27ae60;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            width: 100%;
+            min-width:300px; 
+            text-align: center;
+        }
+
+        button:hover {
+            background-color: #219150;
         }
     </style>
     <meta charset="UTF-8">

@@ -10,6 +10,98 @@
 <head>
     <meta charset="UTF-8">
     <title>Editar Despesa</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        h1 {
+            color: #2c3e50;
+            margin-bottom: 20px;
+        }
+
+        form {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 500px;
+        }
+
+        label {
+            font-size: 16px;
+            margin-bottom: 5px;
+            display: block;
+            color: #2c3e50;
+        }
+
+        input[type="text"], input[type="number"], textarea, select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+            background-color: #ecf0f1;
+        }
+
+        button {
+            background-color: #27ae60;
+            color: #fff;
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #219150;
+        }
+
+        .message {
+            text-align: center;
+            font-size: 18px;
+            color: #e74c3c;
+            margin-top: 20px;
+        }
+
+        a {
+            text-decoration: none;
+            margin-top: 20px;
+        }
+
+        .back-button {
+        background-color: #27ae60;
+        color: #fff;
+        padding: 10px 20px;
+        font-size: 16px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        margin-top: 20px;
+        transition: background-color 0.3s ease;
+    }
+
+    .back-button:hover {
+        background-color: #219150;
+    }
+    </style>
 </head>
 <body>
     <h1>Editar Despesa</h1>
@@ -85,17 +177,17 @@
                             <button type="submit">Salvar Alterações</button>
                         </form>
                     <% } else { %>
-                        <p>Selecione uma despesa para editar.</p>
+                        <p class="message">Selecione uma despesa para editar.</p>
                     <% } %>
                 <% } else { %>
-                    <p>Não há despesas cadastradas.</p>
+                    <p class="message">Não há despesas cadastradas.</p>
                 <% } %>
     <%      } else { %>
-                <p>Você precisa estar logado para acessar esta página.</p>
+                <p class="message">Você precisa estar logado para acessar esta página.</p>
     <%      } %>
         <% } else { %>
-            <p>Sessão não iniciada. Faça login.</p>
+            <p class="message">Sessão não iniciada. Faça login.</p>
         <% } %>
-    <a href="./home.jsp"><button>Voltar</button></a>
+    <a href="./home.jsp" class="back-button">Voltar</a>
 </body>
 </html>
