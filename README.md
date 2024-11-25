@@ -1,4 +1,4 @@
-## **Projeto Despesa**!
+## **Projeto de controle de despesas**!
 
 📊 Sistema para gerenciamento de despesas desenvolvido em **Java** e integrado ao banco de dados **MySQL**. <br>  
 🌐 Tecnologias usadas: Java, JSP, JDBC, MySQL, Apache Tomcat.  
