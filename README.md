@@ -22,7 +22,8 @@
 ## 📋 Funcionalidades
 
 - **Autenticação de Usuários**: Login e validação com CPF e senha.
-- **Cadastro de Despesas**: Inserção de novos registros de despesas vinculados a um usuário.
+- **Cadastro de Categorias**: Inserção de novos registros de categorias vinculados a um usuário.
+- **Cadastro de Despesas**: Inserção de novos registros de despesas vinculados a um usuário e uma categoria.
 - **Listagem de Despesas**: Exibição das despesas cadastradas por usuário.
 - **Validação de Sessão**: Utilização de `HttpSession` para identificar e manter o usuário logado.
 
@@ -51,12 +52,12 @@ Certifique-se de ter instalado:
     ```
 
 2. **Configure o Banco de Dados**
-    - Importe o script SQL localizado em `src/main/resources/database.sql` para criar as tabelas no banco de dados.
-    - Configure as credenciais de conexão no arquivo `DatabaseConnection.java`.
+    - Importe o script SQL localizado em `src/java/util/Conecta.java` para criar as tabelas no banco de dados.
+    - Configure as credenciais de conexão no mesmo arquivo `Conecta.java`.
 
 3. **Compile e Execute o Projeto**
     - Importe o projeto para sua IDE.
-    - Configure o Apache Tomcat como servidor de aplicação.
+    - Configure o Apache Tomcat como servidor de aplicação (no meu caso utilizei o XAMPP).
     - Compile e execute o projeto.
 
 4. **Acesse o Sistema**
@@ -70,9 +71,9 @@ Certifique-se de ter instalado:
 ## 🗂 Estrutura do Projeto
 
 - `src/`: Código-fonte do projeto.
-  - `dao/`: Classes de acesso ao banco de dados (ex.: `DespesaDAO`).
+  - `model/dao/`: Classes de acesso ao banco de dados (ex.: `DespesaDAO`).
   - `model/`: Classes de modelo (ex.: `Despesa` e `Usuario`).
-  - `controller/`: Lógica para gerenciar requisições do usuário.
+  - `util/`: Arquivo para conexão com o banco de dados.
 - `web/`: Páginas JSP e recursos estáticos (HTML/CSS).
 
 ---
